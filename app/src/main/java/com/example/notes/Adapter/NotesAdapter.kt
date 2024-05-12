@@ -101,5 +101,5 @@ class NotesAdapter (private val context: Context ,val listener :NotesitemclickLi
 
         fun onitemClicked(note:Note)
         fun onLongItemClicked(note: Note,cardView: CardView)
-            }
+        }
 }

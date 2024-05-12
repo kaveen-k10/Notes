@@ -8,27 +8,28 @@ import com.example.notes.Models.Note
 import com.example.notes.utilities.DATABASE_NAME
 
 @Database(entities = arrayOf(Note::class), version = 1, exportSchema = false)
-abstract class NoteDatabase :RoomDatabase(){
+abstract class NoteDatabase :RoomDatabase() {
 
 
-    abstract fun getNoteDao() : NoteDao
+    abstract fun getNoteDao(): NoteDao
 
-    companion object{
+    companion object {
 
         @Volatile
-        private var INSTANCE : NoteDatabase?=null
+        private var INSTANCE: NoteDatabase? = null
 
-        fun getDatabase(context: Context):NoteDatabase{
+        fun getDatabase(context: Context): NoteDatabase {
 
-            return INSTANCE ?: synchronized(this){
+            return INSTANCE ?: synchronized(this) {
 
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
                     NoteDatabase::class.java,
                     DATABASE_NAME
                 ).build()
-                INSTANCE =instance
+                INSTANCE = instance
                 instance
             }
-            }
+        }
+    }
 }
